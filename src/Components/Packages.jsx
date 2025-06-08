@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import React from 'react';
 import '../App.css'; // External CSS file
-
+import Toast from '../Toast/ToastMess';
 const packages = [
   {
     title: 'Basic Package',
@@ -20,12 +21,19 @@ const packages = [
 ];
 
 const PackagesSection = () => {
+   const [toastMsg,setToastMsg]=useState(null);
+    const user = sessionStorage.getItem("user");
   const handlePayment = async (amount, packageTitle) => {
+      if(!user){
+      setToastMsg("Login to Continue");
+      return;
+    }
   if (!window.Razorpay) {
     alert('Razorpay SDK not loaded. Please check your script import.');
     return;
   }
-
+   
+ 
   try {
     const API = import.meta.env.VITE_API_BASE_URL;
     const res = await fetch(`${API}/create-order`, {
@@ -94,6 +102,9 @@ const PackagesSection = () => {
 
   return (
     <div className="packages-page">
+       {toastMsg && (
+        <Toast message={toastMsg} onClose={() => setToastMsg(null)} />
+      )}
       <h3 className="packages-heading">Our Packages</h3>
       <div className="packages-section">
         {packages.map((pkg, index) => (
