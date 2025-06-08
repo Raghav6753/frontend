@@ -23,8 +23,8 @@ const Signin = () => {
       Password: data.Password,
     };
     try {
-     const API = import.meta.env.VITE_API_BASE_URL;
-      const res = await axios.post(`${API}/api/user/login`, user);
+       const API = import.meta.env.VITE_API_BASE_URL;
+      const res = await axios.post(`${API}/login`, user);
       setToastMsg(res.data.message); // ✅ Show toast
       sessionStorage.setItem("user", JSON.stringify(res.data.ExistingUser));
       sessionStorage.setItem("type", JSON.stringify(res.data.type));

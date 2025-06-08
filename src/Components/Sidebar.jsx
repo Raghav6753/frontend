@@ -8,7 +8,7 @@ const Sidebar = ({ isOpen, onClose }) => {
    const [toastMsg,setToastMsg]=useState(null);
   const logout= async ()=>{
     const API = import.meta.env.VITE_API_BASE_URL;
-    await axios.post(`${API}/api/user/logout`).then((res)=>{
+    await axios.post(`${API}/logout`).then((res)=>{
         setToastMsg(res.data.message);
         sessionStorage.removeItem("user");
         sessionStorage.removeItem("type");
