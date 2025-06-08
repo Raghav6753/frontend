@@ -1,7 +1,7 @@
 // ToastMess.js
 import React, { useEffect } from "react";
 import ReactDOM from "react-dom";
-import "./toast.css"; // your .custom-toast styles
+import "./Toast.css"; // your .custom-toast styles
 
 const Toast = ({ message, onClose }) => {
   useEffect(() => {
