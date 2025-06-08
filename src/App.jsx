@@ -13,6 +13,7 @@ import ProgressDashboard from "./Features/ProgressDashboard";
 import Mentorship from "./Features/Mentorship";
 import FlashcardsRevisions from "./Features/FlashCardRevisions";
 import DiscussionForums from "./Features/DiscussionForums";
+import ProFeature from "./FurtherPackages/Pro";
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -32,7 +33,7 @@ function App() {
   return (
     <>
       <Routes>
-     
+        <Route path="/pro-feature" element={<ProFeature/>}/>
         <Route path="/test-series" element={<TestSeries />} />
         <Route path="/study-materials" element={<StudyMaterials />} />
         <Route path="/ai-doubt-solver" element={<AIDoubtSolver />} />

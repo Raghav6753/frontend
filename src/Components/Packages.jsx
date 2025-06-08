@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import React from 'react';
-import '../App.css'; // External CSS file
+import '../App.css';
 import Toast from '../Toast/ToastMess';
+import { Link, useNavigate } from 'react-router-dom';
+
 const packages = [
   {
     title: 'Basic Package',
@@ -21,94 +23,33 @@ const packages = [
 ];
 
 const PackagesSection = () => {
-   const [toastMsg,setToastMsg]=useState(null);
-    const user = sessionStorage.getItem("user");
-  const handlePayment = async (amount, packageTitle) => {
-      if(!user){
-      setToastMsg("Login to Continue");
-      return;
+  const [toastMsg, setToastMsg] = useState(null);
+  const navigate = useNavigate();
+  const user = sessionStorage.getItem("user");
+
+  const handleClick = (e, path) => {
+    if (!user) {
+      e.preventDefault(); // stop link navigation
+      setToastMsg("Login to continue");
+    } else {
+      navigate(path);
     }
-  if (!window.Razorpay) {
-    alert('Razorpay SDK not loaded. Please check your script import.');
-    return;
-  }
-   
- 
-  try {
-    const API = import.meta.env.VITE_API_BASE_URL;
-    const res = await fetch(`${API}/create-order`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ amount: amount * 100 }), // amount in paise
-    });
-
-    if (!res.ok) {
-      alert('Failed to create order. Please try again.');
-      return;
-    }
-
-    const data = await res.json();
-
-    const options = {
-      key: 'rzp_test_p5spBljvg1aGjg', // 🛑 Replace with process.env one or Razorpay Key ID
-      amount: data.amount,
-      currency: data.currency,
-      name: 'My Study Platform',
-      description: packageTitle,
-      order_id: data.id,
-      handler: async function (response) {
-        try {
-          const verifyRes = await fetch(`${API}/verify-payment`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_signature: response.razorpay_signature,
-            }),
-          });
-
-          const result = await verifyRes.json();
-
-          if (result.success) {
-            alert(`✅ Payment Verified!\nPayment ID: ${response.razorpay_payment_id}`);
-          } else {
-            alert("❌ Payment Failed! Invalid Signature.");
-          }
-        } catch (err) {
-          console.error("Verification error", err);
-          alert("❌ Verification Failed! Something went wrong.");
-        }
-      },
-      prefill: {
-        name: 'Student Name',
-        email: 'student@example.com',
-        contact: '9999999999',
-      },
-      theme: {
-        color: '#3399cc',
-      },
-    };
-
-    const rzp = new window.Razorpay(options);
-    rzp.open();
-  } catch (error) {
-    console.error(error);
-    alert('Something went wrong while initiating payment.');
-  }
-};
-
-
+  };
 
   return (
     <div className="packages-page">
-       {toastMsg && (
+      {toastMsg && (
         <Toast message={toastMsg} onClose={() => setToastMsg(null)} />
       )}
       <h3 className="packages-heading">Our Packages</h3>
       <div className="packages-section">
         {packages.map((pkg, index) => (
-          <div key={index} className="package-card" onClick={() => handlePayment(pkg.price, pkg.title)} style={{ cursor: 'pointer' }}>
+          <div
+            key={index}
+            className="package-card"
+            to="#"
+            onClick={(e) => handleClick(e, "/pro-feature")}
+          >
             <div className="package-title">{pkg.title}</div>
             <div className="package-price">₹{pkg.price} / month</div>
             <div className="package-description">{pkg.description}</div>
