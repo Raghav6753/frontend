@@ -5,17 +5,17 @@ import Toast from '../Toast/ToastMess';
 const packages = [
   {
     title: 'Basic Package',
-    price: 499,
+    price: 1,
     description: 'Includes access to basic study materials, community forums, and test series.',
   },
   {
     title: 'Pro Package',
-    price: 999,
+    price: 2,
     description: 'All features in Basic + mentorship support, AI doubt solving, and progress tracking.',
   },
   {
     title: 'Ultimate Package',
-    price: 1499,
+    price: 3,
     description: 'Everything in Pro + smart scheduler, flashcards, revision plans, and priority support.',
   },
 ];
