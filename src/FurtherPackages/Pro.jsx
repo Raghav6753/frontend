@@ -17,7 +17,7 @@ const ProFeature=()=>{
      
       try {
         const API = import.meta.env.VITE_API_BASE_URL;
-        const res = await fetch(`${API}/create-order`, {
+        const res = await fetch(`${API}/qcreate-order`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ amount: amount * 100 }), // amount in paise

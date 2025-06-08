@@ -158,3 +158,38 @@
     .buy-btn:hover {
       background: #00ffaa;
     }
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .left-section {
+    display: none; /* hide on small screens */
+  }
+
+  .right-section {
+    width: 100%;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 100vh; /* full screen height */
+  }
+
+  .pro-package-card {
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .price {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .home {
+    left: 10px;
+    top: 10px;
+    font-size: 14px;
+  }
+}
