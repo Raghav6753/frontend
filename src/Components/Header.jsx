@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'; // ✅ Also fix this import!
 import "../App.css";
 
 const Header = ({ onToggleSidebar }) => {
-  const user = JSON.parse(sessionStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
   const name = user?.Name;
 
   return (
