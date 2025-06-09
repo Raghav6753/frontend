@@ -357,3 +357,12 @@ nav a:hover {
   background: #00ffcc;
   border-radius: 4px;
 }
+@media (max-width: 768px) {
+  nav a {
+    display: none; /* Hide all nav links */
+  }
+
+  nav a.always-visible {
+    display: inline-block !important; /* Show only Arora/Login */
+  }
+}
