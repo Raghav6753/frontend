@@ -36,10 +36,11 @@ const Signup = () => {
       localStorage.setItem("type", JSON.stringify(res.data.NewUserType));
       setAuthUser(res.data.NewUser);
       reset();
-
+            setIsLoading(false);
       setTimeout(() => {
         navigate("/"); // ✅ redirect to home using React Router
       }, 2000);
+
     } catch (error) {
       setToastMsg("Error in Signup: " + (error.response?.data?.message || error.message));
       setIsLoading(false);
