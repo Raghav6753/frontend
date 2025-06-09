@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./a.css"; // Your custom CSS
-import { Link } from "react-router-dom"; // FIXED: use 'react-router-dom' not 'react-router'
+import { Link,useNavigate } from "react-router-dom"; // FIXED: use 'react-router-dom' not 'react-router'
 import { useAuth } from "../Context/AuthContext";
 import axios from "axios";
 import { useForm } from "react-hook-form";
@@ -16,8 +16,10 @@ const Signin = () => {
 
   const { setAuthUser } = useAuth();
   const [toastMsg, setToastMsg] = useState(null);
-
+   const [isLoading, setIsLoading] = useState(false);
+     const navigate = useNavigate();
   const onSubmit = async (data) => {
+     setIsLoading(true);
     const user = {
       Email: data.Email,
       Password: data.Password,
@@ -30,6 +32,10 @@ const Signin = () => {
      localStorage.setItem("type", JSON.stringify(res.data.type));
       setAuthUser(res.data.ExistingUser);
       reset();
+       setIsLoading(false);
+      setTimeout(() => {
+        navigate("/"); // ✅ redirect to home using React Router
+      }, 2000);
     } catch (error) {
       setToastMsg(
         "Error in Login: " +
@@ -40,6 +46,8 @@ const Signin = () => {
 
   return (
     <div className="page-container">
+            {isLoading && <Loading />}
+            {toastMsg && <Toast message={toastMsg} onClose={() => setToastMsg(null)} />}
       <div className="left-panel">
         <h1 className="brand-logo">∑ SigmaJEE</h1>
       </div>
