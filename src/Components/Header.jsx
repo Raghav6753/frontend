@@ -18,7 +18,7 @@ const Header = ({ onToggleSidebar }) => {
         <a href="#">Home</a>
         <a href="#features">Features</a>
         <a href="#about">About</a>
-        <Link to={name?"/":"/login"}>{name ? name : "Login"}</Link>
+        <Link to={name?"/":"/login"} className='login-only'>{name ? name : "Login"}</Link>
       </nav>
     </header>
   );
