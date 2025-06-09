@@ -3,7 +3,7 @@ import "./Pro.css";
 import { Link } from "react-router-dom";
 const ProFeature=()=>{
      const [toastMsg,setToastMsg]=useState(null);
-        const user = JSON.parse(sessionStorage.getItem("user"));
+        const user = JSON.parse(localStorage.getItem("user"));
       const handlePayment = async (amount, packageTitle) => {
           if(!user){
           setToastMsg("Login to Continue");

@@ -25,7 +25,7 @@ const packages = [
 const PackagesSection = () => {
   const [toastMsg, setToastMsg] = useState(null);
   const navigate = useNavigate();
-  const user = sessionStorage.getItem("user");
+  const user = localStorage.getItem("user");
 
   const handleClick = (e, path) => {
     if (!user) {
