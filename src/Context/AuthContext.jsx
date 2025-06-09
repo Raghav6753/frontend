@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const token = Cookies.get("jwt") || sessionStorage.getItem("token");
+  const token = Cookies.get("jwt") ||localStorage.getItem("token");
   const [authUser, setAuthUser] = useState(token ? JSON.parse(token) : undefined);
 
   return (
