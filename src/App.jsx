@@ -21,7 +21,7 @@ function App() {
   const { authUser, setAuthUser } = useAuth();
   const toggleSidebar = () => setSidebarOpen(prev => !prev);
   const closeSidebar = () => setSidebarOpen(false);
-     const user = sessionStorage.getItem("user");
+     const user = localStorage.getItem("user");
   useEffect(() => {
     setLoading(true);
     const timeout = setTimeout(() => setLoading(false), 600); // Adjust delay if needed

@@ -18,7 +18,7 @@ const Features = () => {
   const navigate = useNavigate();
 
   const handleClick = (link) => {
-    const user = sessionStorage.getItem("user");
+    const user =localStorage.getItem("user");
     if (user) {
       navigate(link);
     } else {
