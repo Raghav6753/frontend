@@ -319,7 +319,7 @@
   .features {
     grid-template-columns: repeat(2, 1fr); /* 2 cards per row on mobile */
     gap: 1rem; /* Optional: reduce gap for tighter layout */
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
   }
 }
 
