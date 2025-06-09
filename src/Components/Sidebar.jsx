@@ -13,14 +13,14 @@ const Sidebar = ({ isOpen, onClose }) => {
   try {
     const res = await axios.post(`${API}/logout`);
     setToastMsg(res.data.message);
-    sessionStorage.removeItem("user");
-    sessionStorage.removeItem("type");
+    localStorage.removeItem("user");
+    localStorage.removeItem("type");
   } catch (error) {
     console.log("Error in logout", error.response?.data?.message || error.message);
   }
 };
 
-    const user = JSON.parse(sessionStorage.getItem("user"));
+    const user = JSON.parse(localStorage.getItem("user"));
   const name = user?.Name;
   return (
      

@@ -24,8 +24,8 @@ const Signup = () => {
       setToastMsg(res.data.message);
       console.log(res.data.NewUser);
       console.log(res.data.NewUserType);
-      sessionStorage.setItem("user", JSON.stringify(res.data.NewUser));
-      sessionStorage.setItem("type", JSON.stringify(res.data.NewUserType));
+      localStorage.setItem("user", JSON.stringify(res.data.NewUser));
+      localStorage.setItem("type", JSON.stringify(res.data.NewUserType));
       setAuthUser(res.data.NewUser);
       reset();
     }).catch((error) => {
