@@ -353,3 +353,12 @@
     display: inline-block !important;
   }
 }
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+
+  .login-only {
+    display: inline-block !important;
+  }
+}
