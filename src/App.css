@@ -365,6 +365,6 @@
   .features {
     grid-template-columns: repeat(2, 1fr); /* 2 per row */
     gap: 1rem; /* tighter spacing */
-    padding: 1rem; /* reduced padding */
+    padding: 0.5rem; /* reduced padding */
   }
 }
