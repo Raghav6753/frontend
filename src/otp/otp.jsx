@@ -8,6 +8,7 @@ const OtpPage = () => {
   const [otp, setOtp] = useState(new Array(6).fill(""));
   const navigate = useNavigate();
   const location = useLocation();
+   const API = import.meta.env.VITE_API_BASE_URL
   const { amount, packageTitle } = location.state || {};
   const [toastMsg, setToastMsg] = useState("Enter the otp sent on your email to coninue purchasing the pack");
   const handleChange = (value, index) => {
@@ -78,7 +79,6 @@ const OtpPage = () => {
         order_id: data.id,
         handler: async function (response) {
           try {
-            const API = import.meta.env.VITE_API_BASE_URL;
             const verifyRes = await fetch(`${API}/verify-payment`, {
               method: "POST",
               headers: { "Content-Type": "application/json" },

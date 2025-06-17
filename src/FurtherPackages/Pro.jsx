@@ -6,9 +6,9 @@ const ProFeature = () => {
   const [toastMsg, setToastMsg] = useState(null);
   const user = JSON.parse(localStorage.getItem("user"));
   const handleOtp = async () => {
-
+     const API = import.meta.env.VITE_API_BASE_URL
     try {
-      const API = import.meta.env.VITE_API_BASE_URL;
+     ;
       const res = await axios.post(`${API}/send-otp`, { user }); // 🔁 wrapped in { user }
       localStorage.setItem("otp", res.data.otp); // 🧪 only for dev/testing
       console.log("OTP Sent Successfully");
