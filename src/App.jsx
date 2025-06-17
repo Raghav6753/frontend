@@ -14,6 +14,7 @@ import Mentorship from "./Features/Mentorship";
 import FlashcardsRevisions from "./Features/FlashCardRevisions";
 import DiscussionForums from "./Features/DiscussionForums";
 import ProFeature from "./FurtherPackages/Pro";
+import VerifyEmail from "./Pages/verifyEmail";
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -21,7 +22,7 @@ function App() {
   const { authUser, setAuthUser } = useAuth();
   const toggleSidebar = () => setSidebarOpen(prev => !prev);
   const closeSidebar = () => setSidebarOpen(false);
-     const user = localStorage.getItem("user");
+  const user = localStorage.getItem("user");
   useEffect(() => {
     setLoading(true);
     const timeout = setTimeout(() => setLoading(false), 600); // Adjust delay if needed
@@ -29,11 +30,16 @@ function App() {
   }, [location.pathname]);
 
   if (loading) return <Loading />;
-  
+  const isVerified=localStorage.getItem("isVerified");
   return (
     <>
       <Routes>
-        <Route path="/pro-feature" element={<ProFeature/>}/>
+        <Route path="/verify-email" element={isVerified ? <Home
+          sidebarOpen={sidebarOpen}
+          toggleSidebar={toggleSidebar}
+          closeSidebar={closeSidebar}
+        /> : <VerifyEmail />} />
+        <Route path="/pro-feature" element={<ProFeature />} />
         <Route path="/test-series" element={<TestSeries />} />
         <Route path="/study-materials" element={<StudyMaterials />} />
         <Route path="/ai-doubt-solver" element={<AIDoubtSolver />} />
