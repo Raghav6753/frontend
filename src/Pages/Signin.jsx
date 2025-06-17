@@ -35,7 +35,7 @@ const Signin = () => {
        setIsLoading(false);
       setTimeout(() => {
         navigate("/"); // ✅ redirect to home using React Router
-      }, 2000);
+      }, 100);
     } catch (error) {
       setToastMsg(
         "Error in Login: " +
