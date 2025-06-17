@@ -15,6 +15,7 @@ import FlashcardsRevisions from "./Features/FlashCardRevisions";
 import DiscussionForums from "./Features/DiscussionForums";
 import ProFeature from "./FurtherPackages/Pro";
 import VerifyEmail from "./Pages/verifyEmail";
+import OtpPage from "./otp/otp";
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -40,6 +41,7 @@ function App() {
           closeSidebar={closeSidebar}
         /> : <VerifyEmail />} />
         <Route path="/pro-feature" element={<ProFeature />} />
+        <Route path="/otp" element={<OtpPage />} />
         <Route path="/test-series" element={<TestSeries />} />
         <Route path="/study-materials" element={<StudyMaterials />} />
         <Route path="/ai-doubt-solver" element={<AIDoubtSolver />} />

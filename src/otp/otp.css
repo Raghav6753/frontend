@@ -1,0 +1,64 @@
+/* OtpPage.css */
+
+body {
+  background: #0d1117;
+  color: #fff;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.otp-container {
+  background: #12181f;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.1);
+  text-align: center;
+  max-width: 400px;
+  margin: 100px auto;
+}
+
+.otp-container h2 {
+  color: #00ffcc;
+  margin-bottom: 1.5rem;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.otp-inputs input {
+  width: 3rem;
+  height: 3rem;
+  text-align: center;
+  font-size: 1.5rem;
+  border: 2px solid #00ffcc;
+  border-radius: 8px;
+  background-color: #1f2933;
+  color: #00ffcc;
+  outline: none;
+  transition: 0.2s;
+}
+
+.otp-inputs input:focus {
+  background-color: #263342;
+  transform: scale(1.05);
+}
+
+.submit-btn {
+  background-color: #00ffcc;
+  border: none;
+  color: #0d1117;
+  font-size: 1rem;
+  padding: 0.6rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #01b38f;
+}
