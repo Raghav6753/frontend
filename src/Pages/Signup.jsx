@@ -27,7 +27,7 @@ const Signup = () => {
     }
 
     const API = import.meta.env.VITE_API_BASE_URL;
-
+    
     try {
       const res = await axios.post(`${API}/signup`, user);
       setToastMsg(res.data.message);

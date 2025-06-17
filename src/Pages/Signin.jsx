@@ -37,6 +37,7 @@ const Signin = () => {
         navigate("/"); // ✅ redirect to home using React Router
       }, 100);
     } catch (error) {
+        setIsLoading(false);
       setToastMsg(
         "Error in Login: " +
           (error.response?.data?.message || error.message || "Unexpected error")

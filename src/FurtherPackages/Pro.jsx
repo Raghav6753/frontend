@@ -39,7 +39,7 @@ const ProFeature=()=>{
           order_id: data.id,
           handler: async function (response) {
             try {
-              const verifyRes = await fetch(`${API}/verify-payment`, {
+              const verifyRes = await fetch(`api/user/verify-payment`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
