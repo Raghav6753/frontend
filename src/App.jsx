@@ -16,6 +16,7 @@ import DiscussionForums from "./Features/DiscussionForums";
 import ProFeature from "./FurtherPackages/Pro";
 import VerifyEmail from "./Pages/verifyEmail";
 import OtpPage from "./otp/otp";
+import EmailVerificationWaiting from "./Waiting/EmailVer";
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -40,6 +41,11 @@ function App() {
           toggleSidebar={toggleSidebar}
           closeSidebar={closeSidebar}
         /> : <VerifyEmail />} />
+        <Route path="email-ver" element={isVerified ? <Home
+          sidebarOpen={sidebarOpen}
+          toggleSidebar={toggleSidebar}
+          closeSidebar={closeSidebar}
+        /> : <EmailVerificationWaiting />} />
         <Route path="/pro-feature" element={<ProFeature />} />
         <Route path="/otp" element={<OtpPage />} />
         <Route path="/test-series" element={<TestSeries />} />

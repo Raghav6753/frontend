@@ -38,7 +38,7 @@ const Signup = () => {
       reset();
             setIsLoading(false);
       setTimeout(() => {
-       navigate(`/verify-email/${res.data.NewUser.verifyToken}`); 
+       navigate(`/email-ver`); 
       }, 1000);
     } catch (error) {
       setToastMsg("Error in Signup: " + (error.response?.data?.message || error.message));
