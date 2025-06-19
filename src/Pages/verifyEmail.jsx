@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom"; // ✅ useParams instead of useSearchParams
 import axios from "axios";
 import Toast from "../Toast/ToastMess";
 import "../Pages/a.css";
 
 const VerifyEmail = () => {
-  const [searchParams] = useSearchParams();
-  const token = searchParams.get("token");
+  const { token } = useParams(); // ✅ Get token from route params
   const [toastMsg, setToastMsg] = useState(null);
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState(false);
@@ -40,7 +39,7 @@ const VerifyEmail = () => {
               localStorage.removeItem("type");
             });
           }
-        }, 30000); // 60,000 ms = 1 minute
+        }, 60000); // ⏱ 1 minute
       } finally {
         setLoading(false);
       }

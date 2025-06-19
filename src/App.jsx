@@ -35,7 +35,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/verify-email" element={isVerified ? <Home
+        <Route path="/verify-email/:token" element={isVerified ? <Home
           sidebarOpen={sidebarOpen}
           toggleSidebar={toggleSidebar}
           closeSidebar={closeSidebar}
