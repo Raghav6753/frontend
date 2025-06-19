@@ -7,11 +7,12 @@ import "../Pages/a.css";
 const VerifyEmail = () => {
   const [searchParams] = useSearchParams();
   const token = searchParams.get("token");
-
   const [toastMsg, setToastMsg] = useState(null);
   const [loading, setLoading] = useState(true);
   const [success, setSuccess] = useState(false);
   const called = useRef(false);
+
+  const API = import.meta.env.VITE_API_BASE_URL;
 
   useEffect(() => {
     if (!token || called.current) return;
@@ -30,15 +31,21 @@ const VerifyEmail = () => {
         setSuccess(false);
         localStorage.setItem("isVerified", false);
 
-        const user = JSON.parse(localStorage.getItem("user"));
-        await axios.post(`${API}/delete`, user).then(() => {
-          localStorage.removeItem("user");
-          localStorage.removeItem("type");
-        });
+        // Delay delete for 1 minute
+        setTimeout(async () => {
+          const user = JSON.parse(localStorage.getItem("user"));
+          if (user) {
+            await axios.post(`${API}/delete`, user).then(() => {
+              localStorage.removeItem("user");
+              localStorage.removeItem("type");
+            });
+          }
+        }, 30000); // 60,000 ms = 1 minute
       } finally {
         setLoading(false);
       }
     };
+
     verify();
   }, [token]);
 
@@ -67,7 +74,7 @@ const VerifyEmail = () => {
                 <p>
                   The verification link is invalid or expired.
                   <br />
-                  Please sign up again.
+                  Your account will be deleted automatically in 1 minute.
                 </p>
                 <Link to="/signup" className="email-waiting-back">
                   ← Back to Signup
