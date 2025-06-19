@@ -16,7 +16,6 @@ const Signup = () => {
 
   const onSubmit = async (data) => {
     setIsLoading(true);
-
     const user = {
       Name: data.Name,
       Email: data.Email,
@@ -34,13 +33,13 @@ const Signup = () => {
 
       localStorage.setItem("user", JSON.stringify(res.data.NewUser));
       localStorage.setItem("type", JSON.stringify(res.data.NewUserType));
+      const isVerified=res.data.NewUser.isVerified;
       setAuthUser(res.data.NewUser);
       reset();
             setIsLoading(false);
       setTimeout(() => {
-        navigate("/"); // ✅ redirect to home using React Router
-      }, 2000);
-
+        navigate("/verify-email"); 
+      }, 1000);
     } catch (error) {
       setToastMsg("Error in Signup: " + (error.response?.data?.message || error.message));
       setIsLoading(false);

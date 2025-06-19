@@ -78,7 +78,7 @@ function App() {
         <Route
           path="/signup"
           element={
-            user ? (
+            isVerified ? (
               <Home
                 sidebarOpen={sidebarOpen}
                 toggleSidebar={toggleSidebar}

@@ -40,7 +40,7 @@ const Signin = () => {
         setIsLoading(false);
       setToastMsg(
         "Error in Login: " +
-          (error.response?.data?.message || error.message || "Unexpected error")
+          (error.response.data.message || error.message || "Unexpected error")
       );
     }
   };

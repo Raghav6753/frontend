@@ -45,6 +45,65 @@ body, html, #root {
   overflow: hidden;
   padding: 1rem;
 }
+.email-waiting-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: fadeIn 1.2s ease;
+  color: #fff;
+  text-align: center;
+}
+
+.email-waiting-container h2 {
+  color: #00ffcc;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+}
+
+.email-waiting-container p {
+  font-size: 1rem;
+  color: #ccc;
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.email-illustration {
+  width: 80%;
+  max-width: 500px;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(0, 255, 204, 0.15);
+  margin-bottom: 2rem;
+}
+
+.email-waiting-back {
+  padding: 0.7rem 1.2rem;
+  background-color: #00ffcc;
+  color: #0d1117;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.email-waiting-back:hover {
+  background-color: #01b38f;
+  transform: translateY(-2px);
+}
+
+
+@media (max-width: 768px) {
+  .email-illustration {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .email-waiting-container {
+    padding: 1rem;
+  }
+}
 
 .form-wrapper {
   position: absolute;

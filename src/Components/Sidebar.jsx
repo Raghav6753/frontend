@@ -15,6 +15,7 @@ const Sidebar = ({ isOpen, onClose }) => {
     setToastMsg(res.data.message);
     localStorage.removeItem("user");
     localStorage.removeItem("type");
+    localStorage.removeItem("isVerified");
   } catch (error) {
     console.log("Error in logout", error.response?.data?.message || error.message);
   }
